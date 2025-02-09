@@ -1,0 +1,35 @@
+
+
+# Battery
+[battery]
+command=sh -c "echo '    ' $(cat /sys/class/power_supply/BAT0/capacity)%"
+interval=30
+color=#FF33AA  # Bright Magenta
+
+# Network
+[network]
+command=sh -c "ip link show | grep 'state UP' > /dev/null && echo '    ' $(iwgetid -r) || echo '    No Connection'"
+interval=5
+color=#FF3399  # Light Pinkish Purple
+
+# Volume
+[volume]
+command=sh -c "echo '    ' $(amixer get Master | grep -o '[0-9]*%' | head -1)"
+interval=1
+color=#FF66A8  # Bright Pink
+
+# Date & Time
+[time]
+command=date '+    %a, %d %b     %I:%M %p'
+interval=60
+color=#FFFFFF  # Pure White
+
+
+[greenclip]
+command=echo " $(greenclip print | wc -l)"
+interval=5
+color=#00FF00
+signal=1
+click-left=exec /sbin/rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+
