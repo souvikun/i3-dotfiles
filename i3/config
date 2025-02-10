@@ -1,5 +1,11 @@
 #polybar
 #exec_always --no-startup-id polybar 
+exec --no-startup-id xrdb -merge ~/.Xresources
+
+#Screenlock
+bindsym Control+Shift+l exec i3lock -c 123456
+
+
 #clipboard
 exec --no-startup-id greenclip daemon
 bindsym $mod+Ctrl+v exec rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
@@ -45,8 +51,9 @@ gaps outer 0
 # Smart gaps: Remove gaps when only one window is open
 bindsym Mod1+g exec "i3-msg 'gaps inner current toggle 10'"
 
-# Focused window (active)
-client.focused          #ad0048 #ad0048 #ffffff #ad0048  
+#Border colors
+# Focused window (active)     #ad0048
+client.focused          #FFFF99  #FFFF99 #ffffff #FFFF99
 
 # Unfocused windows (inactive)
 client.unfocused        #ffc2db #ffc2db #222222 #ffc2db  
@@ -134,6 +141,10 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+
+#keyboard right
+bindsym Control+Shift+F6 exec xset led on
+bindsym Control+Shift+F7 exec xset led off
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -270,27 +281,39 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command  i3blocks
-    font pango:Iosevka Nerd Font 10
-       position top
-       height 20
-        colors {
-        background #2B1B26
-        statusline #FFC0CB
-        separator #FF79C6
-
+#bar {
+#    status_command  i3blocks
+#    font pango:Iosevka Nerd Font 10
+#       position top
+#       height 20
+#        colors {
+#        background #2B1B26
+#        statusline #FFC0CB
+#        separator #FF79C6
+#
         # Focused window
-        focused_workspace #3B2536 #FF66A8 #2B1B26
-        active_workspace #2B1B26 #D94F70 #2B1B26
-        inactive_workspace #2B1B26 #804A5C #2B1B26
-        urgent_workspace #FF467F #FF79C6 #2B1B26
+#        focused_workspace #3B2536 #FF66A8 #2B1B26
+ #       active_workspace #2B1B26 #D94F70 #2B1B26
+  #      inactive_workspace #2B1B26 #804A5C #2B1B26
+   #     urgent_workspace #FF467F #FF79C6 #2B1B26
+    #}
+
+#}
+bar {
+    status_command i3blocks
+    position top
+    font pango:Iosevka Nerd Font 8
+    colors {
+        background #2a1b2e
+        statusline #ff79c6
+        separator  #c678dd
+
+        focused_workspace  #c678dd #c678dd #2a1b2e
+        active_workspace   #ff79c6 #ff79c6 #2a1b2e
+        inactive_workspace #3e2b3f #3e2b3f #c678dd
+        urgent_workspace   #ff5555 #ff5555 #2a1b2e
     }
-
 }
-
-
-
 
 
 
