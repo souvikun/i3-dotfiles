@@ -42,13 +42,6 @@ interval=1
 
 
 
-
-[volume]
-label=
-command=amixer get Master | awk -F'[][]' '/%/ { print " "$2""}' | head -n 1
-interval=1
-signal=10
-
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
@@ -128,9 +121,15 @@ click-right=notify-send "Battery: $(acpi -b)"
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=1
 
+[volume]
+label=   
+command=playerctl metadata --format "{{ title }}"
+interval=1
+signal=10
+separator=false
 [media]
-label=  
-command=playerctl metadata --format '{{title}}' 2>/dev/null || echo "Not Playing"
+#label= 
+command=/home/souvikkun/.config/i3blocks/scripts/volume-pipewire/volume-pipewire
 interval=2
 click-left=playerctl play-pause
 click-right=playerctl next
@@ -188,3 +187,6 @@ click-left=rofi -modi "clipboard:greenclip print" -show clipboard -run-command '
 click-right=greenclip print | head -n 1 | xclip -selection clipboard
 interval=once
 
+[lock]
+label= lock
+click-left=/home/souvikkun/.config/i3blocks/lock.sh
