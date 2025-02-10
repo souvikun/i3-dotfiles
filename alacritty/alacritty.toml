@@ -12,23 +12,9 @@ size = 10
 # Window settings
 [window]
 padding = { x = 10, y = 10 }
-opacity = 0.9  # Transparency (0.0 - fully transparent, 1.0 - opaque)
+opacity = 0.8 # Transparency (0.0 - fully transparent, 1.0 - opaque)
 decorations = "full"  # Options: full, none, transparent, buttonless
 
-# Colors (Gruvbox Dark Theme)
-[colors.primary]
-background = "#282828"
-foreground = "#ebdbb2"
-
-[colors.normal]
-black   = "#282828"
-red     = "#cc241d"
-green   = "#98971a"
-yellow  = "#d79921"
-blue    = "#458588"
-magenta = "#b16286"
-cyan    = "#689d6a"
-white   = "#a89984"
 
 # Scrolling
 [scrolling]
@@ -36,3 +22,7 @@ history = 10000
 multiplier = 3
 
 
+[general]
+import = [
+    "/home/souvikkun/.config/alacritty/Themes/themes/dark_pride.toml"
+]
